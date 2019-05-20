@@ -2,6 +2,8 @@
 
 `k` is a script to repeatedly run a command on file changes.
 
+`k` stands for **k**eeping it running
+
 # Install
 
 ```sh
@@ -63,11 +65,11 @@ If you're learning a new programming language or doing a 'code challenge' type o
 k ruby my_program.rb
 ```
 
-and display the results at the bottom of your program.
+to display the results of your program every time you save it.
 
 ### Linting
 
-The shell script linter `shellcheck` was used to lint `k`.
+The shell script linter [ShellCheck](https://github.com/koalaman/shellcheck) was used to lint `k`.
 
 In this case, the command was:
 
@@ -77,6 +79,8 @@ k shellcheck k
 
 # How it works
 
-`k` uses `entr` and `ag` under the hood.
+`k` uses [entr](http://eradman.com/entrproject/) and [ag](https://github.com/ggreer/the_silver_searcher) under the hood.
 
-It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>` but the runner will stop when new files are created.
+It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>`.
+
+This does a few extra things (see [What it does](#what-it-does)).
