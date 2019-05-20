@@ -9,10 +9,8 @@ ensure_requirements_met() {
   if test "$MAX_FILES" -lt "10000"; then
     echo "maxfiles is too low"
     echo "try:"
-    echo "  cd /Library/LaunchDaemons"
-
     echo "  sudo curl http://eradman.com/entrproject/etc/limit.maxfiles.plist > /Library/LaunchDaemons/"
-    echo "  sudo launchctrl load /Library/LaunchDaemons/limit.maxfiles.plist"
+    echo "  sudo launchctl load /Library/LaunchDaemons/limit.maxfiles.plist"
     echo
 
     REQUIREMENTS_NOT_MET=true
