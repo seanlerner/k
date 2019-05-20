@@ -8,9 +8,9 @@
 curl https://raw.githubusercontent.com/seanlerner/k/master/k > /usr/local/bin/k && chmod +x /usr/local/bin/k
 ```
 
-# Prerequisits
+# Prerequisites
 
-Instructions are provided on how to install the prerequisits when attempting to use `k` for the first time.
+Instructions are provided on how to install the prerequisites when attempting to use `k` for the first time.
 
 # How to use
 
