@@ -10,7 +10,7 @@ ensure_requirements_met() {
     echo "maxfiles is too low"
     echo "try:"
     echo "  cd /Library/LaunchDaemons"
-    echo "  sudo curl -o http://eradman.com/entrproject/etc/limit.maxfiles.plist"
+    echo "  sudo curl -O http://eradman.com/entrproject/etc/limit.maxfiles.plist"
     echo "  sudo launchctl load /Library/LaunchDaemons/limit.maxfiles.plist"
     echo
 
