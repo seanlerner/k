@@ -83,6 +83,4 @@ k shellcheck k
 
 `k` uses [entr](http://eradman.com/entrproject/) and [ag](https://github.com/ggreer/the_silver_searcher) under the hood.
 
-It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>`.
-
-This does a few extra things (see [What it does](#what-it-does)).
+It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>`, however, this script  does a few extra things to make the experience a little more pleasant (see [What it does](#what-it-does)).
