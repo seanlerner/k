@@ -1,21 +1,43 @@
 #!/bin/bash
 
 ensure_requirements_met() {
+  MAX_FILES=$(launchctl limit maxfiles | tr -s " " | awk '{$1=$1};1' | cut -d' ' -f 2)
   ENTR=$(command -v entr)
   AG=$(command -v ag)
 
-  if ! test "$ENTR" && ! test "$AG"; then
-    echo "'entr' and 'ag' are required to use 'k'"
-    echo "try 'brew install entr ag' and then try again"
+  if test "$MAX_FILES" == 256; then
+    echo "maxfiles is too low"
+    echo "try:"
+    echo "  cd /Library/LaunchDaemons"
+    echo "  sudo curl -sO http://eradman.com/entrproject/etc/limit.maxfiles.plist"
+    echo "  sudo launchctrl load /Library/LaunchDaemons/limit.maxfiles.plist"
+    echo
+  fi
+
+  if ! test "$ENTR"; then
+    echo "'entr' is required"
+    echo "try:"
+    echo "  brew install entr"
+    echo
+  fi
+
+
+  if ! test "$AG"; then
+    echo "'ag' is required"
+    echo "try:"
+    echo "  brew install ag"
+    echo
+  fi
+
+  if ! test "$ENTR" || ! test "$AG" || test "$MAX_FILES" == 256; then
+    echo "Try resolving the above requirements and then try again"
     exit 1
-  elif ! test "$ENTR"; then
-    echo "'entr' is required to use 'k'"
-    echo "try 'brew install entr' and then try again"
-    exit 1
-  elif ! test "$AG"; then
-    echo "'ag' is required to use 'k'"
-    echo "try 'brew install ag' and then try again"
-    exit 1
+  fi
+
+  if ! test "$COMMAND"; then
+    echo "Usage:"
+    echo "  k <your command>"
+    exit
   fi
 }
 
