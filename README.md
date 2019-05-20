@@ -26,15 +26,15 @@ k <your command>
 
 `Control-C` twice in a row will stop the runner altogether.
 
-# What it does
+# What `k` does
 
-It does a few things out of the box:
+`k` does a few things out of the box:
 
 - repeatedly runs whatever command each time a file changes within the current directory or a subdirectory
 - clears the screen and prints the name of the command at the top before executing it
 - continues to run even if a file is deleted or added to the current directory / subdirectory
 
-# Where it's useful
+# Where `k` is useful
 
 `k` is useful when you want to run a command over and over again.
 
@@ -53,11 +53,13 @@ RuntimeError:
 bin/rails test test/test_your_test.rb:5
 ```
 
-You could then copy `bin/rails test test/test_your_test.rb:5` to your clipboard and issue the command:
+You could then issue the command:
 
 ```sh
 k bin/rails test test/test_your_test.rb:5
 ```
+
+and continue to work on your code until the test passes.
 
 ### Simple program output
 
