@@ -1,17 +1,21 @@
 #!/bin/bash
 
 ensure_requirements_met() {
-  MAX_FILES=$(launchctl limit maxfiles | tr -s " " | awk '{$1=$1};1' | cut -d' ' -f 2)
+  MAX_FILES=$(launchctl limit maxfiles | awk '{print $2}')
   ENTR=$(command -v entr)
   AG=$(command -v ag)
 
-  if test "$MAX_FILES" == 256; then
+
+  if test "$MAX_FILES" -lt "10000"; then
     echo "maxfiles is too low"
     echo "try:"
     echo "  cd /Library/LaunchDaemons"
-    echo "  sudo curl -sO http://eradman.com/entrproject/etc/limit.maxfiles.plist"
+
+    echo "  sudo curl http://eradman.com/entrproject/etc/limit.maxfiles.plist > /Library/LaunchDaemons/"
     echo "  sudo launchctrl load /Library/LaunchDaemons/limit.maxfiles.plist"
     echo
+
+    REQUIREMENTS_NOT_MET=true
   fi
 
   if ! test "$ENTR"; then
@@ -19,6 +23,8 @@ ensure_requirements_met() {
     echo "try:"
     echo "  brew install entr"
     echo
+
+    REQUIREMENTS_NOT_MET=true
   fi
 
 
@@ -27,9 +33,11 @@ ensure_requirements_met() {
     echo "try:"
     echo "  brew install ag"
     echo
+
+    REQUIREMENTS_NOT_MET=true
   fi
 
-  if ! test "$ENTR" || ! test "$AG" || test "$MAX_FILES" == 256; then
+  if test $REQUIREMENTS_NOT_MET; then
     echo "Try resolving the above requirements and then try again"
     exit 1
   fi
