@@ -12,7 +12,9 @@ curl https://raw.githubusercontent.com/seanlerner/k/master/k > /usr/local/bin/k 
 
 # Prerequisites
 
-Instructions are provided on how to install the prerequisites when attempting to use `k` for the first time.
+`k` requires [entr](http://eradman.com/entrproject/), [ag](https://github.com/ggreer/the_silver_searcher) and an increased `maxfiles` limit.
+
+Instructions are provided on how to install and set these up when attempting to use `k` for the first time.
 
 # How to use
 
