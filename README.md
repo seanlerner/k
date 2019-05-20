@@ -2,7 +2,7 @@
 
 `k` is a script to repeatedly run a command on file changes.
 
-`k` stands for **k**eeping it running
+`k` stands for **k**eeping it running.
 
 # Install
 
