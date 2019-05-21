@@ -2,7 +2,7 @@
 
 `k` is a script to repeatedly run a command on file changes.
 
-`k` stands for **k**eeping it running.
+`k` stands for **k**eep it running.
 
 # Install
 
@@ -22,17 +22,17 @@ Instructions are provided on how to install and set these up when attempting to 
 k <your command>
 ```
 
-`Control-C` will stop and restart the current command.
+`Control-C` once will stop and restart the current command.
 
-`Control-C` twice in a row will stop the runner altogether.
+`Control-C` twice quickly will stop running `k` completely.
 
 # What `k` does
 
-`k` does a few things out of the box:
+`k` does a few things out of the box. It:
 
-- repeatedly runs whatever command each time a file changes within the current directory or a subdirectory
-- clears the screen and prints the name of the command at the top before executing it
-- continues to run even if a file is deleted or added to the current directory / subdirectory
+- repeatedly runs a command each time a file changes within the current directory or a subdirectory.
+- clears the screen and prints the name of the command at the top before executing it.
+- continues to run even if a file is deleted or added to the current directory / subdirectory.
 
 # Where `k` is useful
 
@@ -40,7 +40,7 @@ k <your command>
 
 ### Test failures
 
-For example, if a test is failing using ruby and minitest, the message will look like so:
+For example, if a test is failing using Ruby and minitest, the message will look like so:
 
 ```plain
 E
@@ -85,4 +85,4 @@ k shellcheck k
 
 `k` uses [entr](http://eradman.com/entrproject/) and [ag](https://github.com/ggreer/the_silver_searcher) under the hood.
 
-It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>`, however, this script  does a few extra things to make the experience a little more pleasant (see [What it does](#what-it-does)).
+It's possible to achieve a similar effect by using `ag -l | entr -cd <your command>`. However, this script does a few extra things to make the experience a little more pleasant (see [What `k` does](#what-k-does)).
